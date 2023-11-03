@@ -1,1 +1,12 @@
-
+{
+  "manifest_version": 3,
+  "name": "Drink water reminder",
+  "version": "1.0",
+  "description": "What is essential for life. So drink it.",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "./images/icon1.png"
+    }
+  }
+}
