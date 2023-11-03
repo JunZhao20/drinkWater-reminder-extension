@@ -1,0 +1,24 @@
+.title {
+  font-size: 30px;
+}
+
+body {
+  background-color: rgb(171, 234, 241);
+  align-items: center;
+}
+
+.containerBody {
+  text-align: center;
+  color: black;
+}
+
+.interacts {
+  padding: 15px;
+}
+#field-time {
+  font-size: 18px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
