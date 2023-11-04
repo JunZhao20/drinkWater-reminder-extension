@@ -8,11 +8,22 @@
   <body>
     <div class="containerBody">
       <h1 class="title">💧Drink!💧</h1>
-
-      <div class="interacts">
-        <input type="int" id="field-time" placeholder="Add minutes" />
-        <button class="enterTime">Enter</button>
+      <div class="image-container">
+        <img class="bottle" src="./images/bottle.png" alt="bottle" />
+        <div class="text-overlay">
+          <h4>0</h4>
+        </div>
       </div>
+      <div>
+        <h2 class="countDown">14:00</h2>
+      </div>
+      <div class="interacts">
+        <input type="number" id="field-time" placeholder="Add minutes" />
+        <button class="btn">
+          <img class="imgBtn" src="./images/timeAdd.jpg" alt="timeIcon" />
+        </button>
+      </div>
+      <button class="resetBtn">reset</button>
     </div>
 
     <script src="script.js"></script>
