@@ -58,6 +58,7 @@ body {
   text-decoration: solid;
   font-weight: 750;
   color: rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 .image-container {
@@ -77,9 +78,49 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.hide {
+  opacity: 1;
+  background-color: black;
+}
+
+.info-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.info-box {
+  background-color: aliceblue;
+}
+
 .text-overlay h4 {
   font-size: 30px;
-  color: grey;
+  color: rgb(47, 116, 236);
   padding-top: 5px;
   padding-left: 2px;
+}
+
+.info-reset {
+  left: 100%;
+  display: inline-flex;
+  gap: 80px;
+  margin-bottom: 2px;
+}
+
+.info {
+  padding-top: 5px;
+  margin-left: -67px;
+  height: 20px;
+  width: 20px;
+}
+
+.info:hover .hide {
+  opacity: 1;
 }
