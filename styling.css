@@ -122,7 +122,7 @@ body {
   width: 20px;
 }
 
-.info:hover + .hide .info-overlay {
+.info:hover {
   opacity: 1;
   pointer-events: auto;
 }
