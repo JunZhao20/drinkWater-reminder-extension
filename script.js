@@ -1,11 +1,13 @@
 const infoIcon = document.querySelector(".info");
-
-console.log(infoIcon);
+const hide = document.querySelector(".hide");
+const infoOverlay = document.querySelector(".info-overlay");
+const infoBox = document.querySelector(".info-box");
 
 infoIcon.addEventListener("mouseover", () => {
-  infoIcon.classList.add("hide", "info-overlay", "info-box");
+  hide.style.opacity = "1";
+  infoOverlay.style.transition = "opacity 0.3s ease";
 });
 
 infoIcon.addEventListener("mouseout", () => {
-  infoIcon.classList.remove("hide", "info-overlay", "info-box");
+  hide.style.opacity = "0";
 });
