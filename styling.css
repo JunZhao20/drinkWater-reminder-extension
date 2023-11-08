@@ -85,12 +85,14 @@ body {
 }
 
 .info-box {
-  background-color: aliceblue;
+  background-color: rgb(247, 247, 247);
   border-radius: 15px;
   border: solid;
   border-color: aqua;
-  height: 100;
-  width: 120;
+  height: 125px;
+  width: 180px;
+  padding: 10px;
+  position: relative;
 }
 
 .text-overlay h4 {
@@ -130,4 +132,12 @@ body {
 .info:hover {
   opacity: 1;
   pointer-events: auto;
+}
+
+.reference {
+  font-size: smaller;
+}
+
+.info-para {
+  font-weight: bold;
 }
