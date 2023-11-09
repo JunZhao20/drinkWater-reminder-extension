@@ -5,11 +5,32 @@
 body {
   background-color: rgb(171, 234, 241);
   align-items: center;
+  text-align: center;
+  width: 250px;
+  height: 300;
 }
 
 .containerBody {
   text-align: center;
+  align-items: center;
   color: black;
+}
+
+.timer-container {
+  padding: 10px;
+  text-align: center;
+
+  border: solid;
+  border-color: rgb(47, 116, 236);
+  height: 20px;
+  width: 120px;
+  background-color: white;
+  margin-left: 21%;
+}
+
+.countDown {
+  font-size: 30px;
+  margin-top: -12px;
 }
 
 .interacts {
@@ -17,10 +38,11 @@ body {
 }
 #field-time {
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   padding-top: 5px;
+  padding-left: 8px;
   padding-bottom: 5px;
-  margin-top: -10px;
+  margin-top: -20px;
   margin-bottom: 10px;
   border-radius: 20px;
   border: none;
@@ -110,7 +132,8 @@ body {
 }
 
 .resetBtn {
-  height: 25px;
+  margin-top: 10px;
+  height: 35px;
   width: 40;
   margin-left: 80%;
   border-radius: 15px;
