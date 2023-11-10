@@ -9,6 +9,12 @@ const btn = document.querySelector(".btn");
 const inputField = document.querySelector("#field-time");
 const timer = document.querySelector(".countDown");
 
+// Variables
+var inputValue = inputField.value;
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
+
 // Event Listener
 infoIcon.addEventListener("mouseover", () => {
   hide.style.opacity = "1";
@@ -19,11 +25,15 @@ infoIcon.addEventListener("mouseout", () => {
   hide.style.opacity = "0";
 });
 
-inputField.addEventListener("onchange", (e) => {
-  inputField.value = e.target.value;
+inputField.addEventListener("input", (e) => {
+  inputValue = e.target.value;
 });
 
-btn.addEventListener("click", () => {});
+btn.addEventListener("click", () => {
+  hours = inputValue.slice(0, 2);
+  minutes = inputValue.slice(3, 5);
+  console.log(Number(hours), Number(minutes));
+});
 
 //Timer
 
@@ -31,10 +41,9 @@ const timerFormat = function (time) {
   return time < 10 ? `0${time}` : time;
 };
 
-let hours = 0;
-let minutes = 0;
-let seconds = 0;
-
-timer.textContent = `${timerFormat(hours)}:${timerFormat(
-  minutes
-)}:${timerFormat(seconds)}`;
+let formattedTimer = (timer.textContent = `
+${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
+  Number(seconds)
+)}
+`);
+console.log(...formattedTimer);
