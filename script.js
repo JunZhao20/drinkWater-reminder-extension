@@ -16,6 +16,8 @@ let minutes = 0;
 let seconds = 0;
 
 // Event Listener
+
+// Info hover listeners
 infoIcon.addEventListener("mouseover", () => {
   hide.style.opacity = "1";
   infoOverlay.style.transition = "opacity 0.3s ease";
@@ -25,14 +27,21 @@ infoIcon.addEventListener("mouseout", () => {
   hide.style.opacity = "0";
 });
 
+// Timer input field listener
 inputField.addEventListener("input", (e) => {
   inputValue = e.target.value;
 });
 
+// Set timer listener
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
   console.log(Number(hours), Number(minutes));
+  formattedTimer = timer.textContent = `
+${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
+    Number(seconds)
+  )}
+`;
 });
 
 //Timer
