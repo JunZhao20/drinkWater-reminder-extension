@@ -25,6 +25,16 @@ inputField.addEventListener("onchange", (e) => {
 
 btn.addEventListener("click", () => {});
 
-/////////////////////////////////////////////////
+//Timer
 
-timer.textContent = `00:00:00`;
+const timerFormat = function (time) {
+  return time < 10 ? `0${time}` : time;
+};
+
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
+
+timer.textContent = `${timerFormat(hours)}:${timerFormat(
+  minutes
+)}:${timerFormat(seconds)}`;
