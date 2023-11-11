@@ -10,7 +10,7 @@ const inputField = document.querySelector("#field-time");
 const timer = document.querySelector(".countDown");
 
 // Variables
-var inputValue = inputField.value;
+let inputValue = inputField.value;
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
@@ -36,23 +36,32 @@ inputField.addEventListener("input", (e) => {
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
-  console.log(Number(hours), Number(minutes));
-  formattedTimer = timer.textContent = `
+  timer.textContent = `
 ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
 `;
 });
 
-//Timer
+//Timer formatting
 
 const timerFormat = function (time) {
   return time < 10 ? `0${time}` : time;
 };
 
-let formattedTimer = (timer.textContent = `
-${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
-  Number(seconds)
-)}
-`);
-console.log(...formattedTimer);
+// let formattedTimer = (timer.textContent = `
+// ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
+//   Number(seconds)
+// )}
+// `);
+// console.log(...formattedTimer);
+
+// Timer count down
+
+// Reset timer
+
+resetBtn.addEventListener("click", () => {
+  timer.textContent = "00:00:00";
+  inputField.value = inputField.defaultValue;
+  timer.textContent = timer.defaultValue;
+});
