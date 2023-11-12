@@ -63,5 +63,4 @@ const timerFormat = function (time) {
 resetBtn.addEventListener("click", () => {
   timer.textContent = "00:00:00";
   inputField.value = inputField.defaultValue;
-  timer.textContent = timer.defaultValue;
 });
