@@ -9,11 +9,32 @@ const btn = document.querySelector(".btn");
 const inputField = document.querySelector("#field-time");
 const timer = document.querySelector(".countDown");
 
+////////////////////////////////////////////
+
 // Variables
 let inputValue = inputField.value;
 let hours = 0;
 let minutes = 0;
 let seconds = 0;
+let timerStopped = false;
+
+////////////////////////////////////////////
+
+// Functions
+
+//Timer formatting
+const timerFormat = function (time) {
+  return time < 10 ? `0${time}` : time;
+};
+
+// timer
+let startTimer = function (timerInput) {
+  let countDown = setInterval(() => {
+    console.log(timerInput--);
+  }, timerInput);
+};
+
+////////////////////////////////////////////
 
 // Event Listener
 
@@ -41,22 +62,18 @@ ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
 `;
+  // Start timer
+  if (minutes !== 0 || minutes !== "0") {
+    // Grabs seconds for minutes
+    minutes = minutes * 100;
+  }
+  if (hours !== 0 || hours !== "0") {
+    // Grabs seconds from hours
+    hours = hours * 1000;
+  }
+  const totalTine = minutes + hours;
+  startTimer(totalTine);
 });
-
-//Timer formatting
-
-const timerFormat = function (time) {
-  return time < 10 ? `0${time}` : time;
-};
-
-// let formattedTimer = (timer.textContent = `
-// ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
-//   Number(seconds)
-// )}
-// `);
-// console.log(...formattedTimer);
-
-// Timer count down
 
 // Reset timer
 
@@ -64,3 +81,5 @@ resetBtn.addEventListener("click", () => {
   timer.textContent = "00:00:00";
   inputField.value = inputField.defaultValue;
 });
+
+////////////////////////////////////////////
