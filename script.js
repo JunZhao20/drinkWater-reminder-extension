@@ -53,7 +53,7 @@ inputField.addEventListener("input", (e) => {
   inputValue = e.target.value;
 });
 
-// Set timer listener
+// Set timer listener and formatting
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
@@ -62,17 +62,17 @@ ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
 `;
-  // Start timer
-  if (minutes !== 0 || minutes !== "0") {
-    // Grabs seconds for minutes
-    minutes = minutes * 100;
-  }
-  if (hours !== 0 || hours !== "0") {
-    // Grabs seconds from hours
-    hours = hours * 1000;
-  }
-  const totalTine = minutes + hours;
-  startTimer(totalTine);
+  // // Start timer
+  // if (minutes !== 0 || minutes !== "0") {
+  //   // Grabs seconds for minutes
+  //   minutes = minutes * 100;
+  // }
+  // if (hours !== 0 || hours !== "0") {
+  //   // Grabs seconds from hours
+  //   hours = hours * 1000;
+  // }
+  // const totalTine = minutes + hours;
+  // startTimer(totalTine);
 });
 
 // Reset timer
