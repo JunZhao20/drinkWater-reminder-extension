@@ -1,9 +1,11 @@
+// creates a repeating alarm for drinkTimer
 chrome.alarm.create("drinkTimer", {
-  periodInMIns: 1 / 60,
+  periodInMinutes: 1 / 60,
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "drinkTimer") {
+    console.log("alarm rang");
   }
 });
 
