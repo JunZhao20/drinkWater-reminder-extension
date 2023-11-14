@@ -3,11 +3,10 @@
   "name": "Drink water reminder",
   "version": "1.0",
   "background": {
-    "scripts": ["script.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
-  "permissions": ["storage"],
-  "description": "What is essential for life. So drink it.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "description": "Water is essential for life. So drink it.",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
