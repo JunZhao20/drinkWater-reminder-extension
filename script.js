@@ -7,7 +7,7 @@ const drinkNum = document.querySelector(".drink-num");
 const resetBtn = document.querySelector(".resetBtn");
 const btn = document.querySelector(".btn");
 const inputField = document.querySelector("#field-time");
-const timer = document.querySelector(".countDown");
+const time = document.querySelector(".countDown");
 
 ////////////////////////////////////////////
 
@@ -27,11 +27,14 @@ const timerFormat = function (time) {
   return time < 10 ? `0${time}` : time;
 };
 
-// timer
-let startTimer = function (timerInput) {
-  let countDown = setInterval(() => {
-    console.log(timerInput--);
-  }, timerInput);
+let updateTimer = function () {
+  chrome.storage.local.get(["timer"], (res) => {
+    time.textContent = `
+    ${timerFormat(Number(hours))}:${timerFormat(res.timer)}:${timerFormat(
+      Number(seconds)
+    )}
+    `;
+  });
 };
 
 ////////////////////////////////////////////
@@ -51,17 +54,23 @@ infoIcon.addEventListener("mouseout", () => {
 // Timer input field listener
 inputField.addEventListener("input", (e) => {
   inputValue = e.target.value;
+  chrome.storage.local.get(["timer"], (res) => {
+    chrome.storage.local.set({
+      timer: +inputValue,
+    });
+  });
 });
 
 // Set timer listener and formatting
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
-  timer.textContent = `
+  time.textContent = `
 ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
 `;
+
   chrome.storage.local.set({
     isRunning: true,
   });
@@ -70,8 +79,18 @@ ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
 // Reset timer
 
 resetBtn.addEventListener("click", () => {
-  timer.textContent = "00:00:00";
-  inputField.value = inputField.defaultValue;
+  chrome.storage.local.set(
+    {
+      timer: 0,
+      isRunning: false,
+    },
+    () => {
+      time.textContent = "00:00:00";
+      inputField.value = inputField.defaultValue;
+    }
+  );
 });
 
 ////////////////////////////////////////////
+updateTimer();
+setInterval(updateTimer, 1000);
