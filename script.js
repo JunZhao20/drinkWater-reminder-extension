@@ -62,17 +62,9 @@ ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
 `;
-  // // Start timer
-  // if (minutes !== 0 || minutes !== "0") {
-  //   // Grabs seconds for minutes
-  //   minutes = minutes * 100;
-  // }
-  // if (hours !== 0 || hours !== "0") {
-  //   // Grabs seconds from hours
-  //   hours = hours * 1000;
-  // }
-  // const totalTine = minutes + hours;
-  // startTimer(totalTine);
+  chrome.storage.local.set({
+    isRunning: true,
+  });
 });
 
 // Reset timer
