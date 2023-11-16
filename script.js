@@ -8,6 +8,8 @@ const resetBtn = document.querySelector(".resetBtn");
 const btn = document.querySelector(".btn");
 const inputField = document.querySelector("#field-time");
 const time = document.querySelector(".countDown");
+const overlayAlert = document.getElementById("overlay-alert");
+const customAlert = document.getElementById("custom-alert");
 
 ////////////////////////////////////////////
 
@@ -35,6 +37,16 @@ let updateTimer = function () {
     )}
     `;
   });
+};
+
+const showCustomAlert = function () {
+  overlayAlert.style.display = "block";
+  customAlert.style.display = "block";
+};
+
+const hideCustomAlert = function () {
+  overlayAlert.style.display = "none";
+  customAlert.style.display = "none";
 };
 
 ////////////////////////////////////////////
