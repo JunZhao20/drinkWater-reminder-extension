@@ -198,3 +198,13 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+.alert-close-btn {
+  border-radius: 15px;
+  border-color: aqua;
+  background-color: aliceblue;
+  text-decoration: solid;
+  font-weight: 750;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
