@@ -62,18 +62,25 @@ inputField.addEventListener("input", (e) => {
 });
 
 // Set timer listener and formatting
+
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
   time.textContent = `
-${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
+  ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
   )}
-`;
-
-  chrome.storage.local.set({
-    isRunning: true,
-  });
+  `;
+  if (inputValue === inputField.defaultValue) {
+    chrome.storage.local.set({
+      isRunning: false,
+    });
+    alert("Please input time");
+  } else {
+    chrome.storage.local.set({
+      isRunning: true,
+    });
+  }
 });
 
 // Reset timer
