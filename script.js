@@ -10,6 +10,7 @@ const inputField = document.querySelector("#field-time");
 const time = document.querySelector(".countDown");
 const overlayAlert = document.getElementById("overlay-alert");
 const customAlert = document.getElementById("custom-alert");
+const alertCloseBtn = document.querySelector(".alert-close-btn");
 
 ////////////////////////////////////////////
 
@@ -87,7 +88,7 @@ btn.addEventListener("click", () => {
     chrome.storage.local.set({
       isRunning: false,
     });
-    alert("Please input time");
+    showCustomAlert();
   } else {
     chrome.storage.local.set({
       isRunning: true,
@@ -108,6 +109,11 @@ resetBtn.addEventListener("click", () => {
       inputField.value = inputField.defaultValue;
     }
   );
+});
+
+// Custom alert close btn
+alertCloseBtn.addEventListener("click", () => {
+  hideCustomAlert();
 });
 
 ////////////////////////////////////////////
