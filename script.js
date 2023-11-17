@@ -35,13 +35,18 @@ let updateTimer = function () {
     hours = inputValue.slice(0, 2);
     minutes = inputValue.slice(3, 5);
     minutes = Number(minutes) - Math.ceil(res.timer / 60);
-    seconds = 60 - (res.timer % 60);
+    let seconds = "00";
+    if (res.timer % 60 != 0) {
+      seconds = 60 - (res.timer % 60);
+    }
+
     time.textContent = `
     ${timerFormat(Number(hours))}:${timerFormat(minutes)}:${timerFormat(
       Number(seconds)
     )}
     `;
   });
+  time.textContent = "00:00:00";
 };
 
 const showCustomAlert = function () {
