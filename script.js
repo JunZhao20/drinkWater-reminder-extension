@@ -20,7 +20,7 @@ let hours = 0;
 let minutes = 0;
 let seconds = 0;
 let timerStopped = false;
-
+let reset = false;
 ////////////////////////////////////////////
 
 // Functions
@@ -39,14 +39,16 @@ let updateTimer = function () {
     if (res.timer % 60 != 0) {
       seconds = 60 - (res.timer % 60);
     }
-
-    time.textContent = `
-    ${timerFormat(Number(hours))}:${timerFormat(minutes)}:${timerFormat(
-      Number(seconds)
-    )}
-    `;
+    if (reset === true) {
+      time.textContent = "00:00:00";
+    } else {
+      time.textContent = `
+        ${timerFormat(Number(hours))}:${timerFormat(minutes)}:${timerFormat(
+        Number(seconds)
+      )}
+        `;
+    }
   });
-  time.textContent = "00:00:00";
 };
 
 const showCustomAlert = function () {
@@ -102,6 +104,7 @@ btn.addEventListener("click", () => {
     chrome.storage.local.set({
       isRunning: true,
     });
+    reset = false;
   }
 });
 
@@ -116,6 +119,7 @@ resetBtn.addEventListener("click", () => {
     () => {
       time.textContent = "00:00:00";
       inputField.value = inputField.defaultValue;
+      reset = true;
     }
   );
 });
