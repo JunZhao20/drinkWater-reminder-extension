@@ -9,7 +9,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
     chrome.storage.local.get(["timer", "isRunning"], (res) => {
       // if isRunning is present is true initialize timer var with res.timer + 1
       if (res.isRunning) {
-        let timer = res.timer + 1;
+        let timer = Number(res.timer) + 1;
         // updates timer by setting timer var.
         chrome.storage.local.set({
           timer,
@@ -21,7 +21,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 // initialize default values to the timer and isRunning keys if they don't exist
 chrome.storage.local.get(["timer", "isRunning"], (res) => {
   chrome.storage.local.set({
-    timer: "timer" in res ? res.timer : 0,
+    timer: "timer" in res ? Number(res.timer) : 0,
     isRunning: "isRunning" in res ? res.isRunning : false,
   });
 });
