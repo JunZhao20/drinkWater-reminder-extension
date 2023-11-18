@@ -21,6 +21,7 @@ let minutes = 0;
 let seconds = 0;
 let timerStopped = false;
 let reset = false;
+
 ////////////////////////////////////////////
 
 // Functions
@@ -51,6 +52,7 @@ let updateTimer = function () {
   });
 };
 
+// Custom alert
 const showCustomAlert = function () {
   overlayAlert.style.display = "block";
   customAlert.style.display = "block";
@@ -86,7 +88,6 @@ inputField.addEventListener("input", (e) => {
 });
 
 // Set timer listener and formatting
-
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
