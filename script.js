@@ -35,7 +35,9 @@ let updateTimer = function () {
   chrome.storage.local.get(["timer"], (res) => {
     hours = inputValue.slice(0, 2);
     minutes = inputValue.slice(3, 5);
-    minutes = minutes - Math.ceil(res.timer / 60);
+    minutes = Number(minutes) - Math.ceil(res.timer / 60);
+    console.log(Math.ceil(res.timer / 60));
+    console.log(minutes);
     let seconds = "00";
     if (res.timer % 60 != 0) {
       seconds = 60 - (res.timer % 60);
@@ -44,9 +46,9 @@ let updateTimer = function () {
       time.textContent = "00:00:00";
     } else {
       time.textContent = `
-        ${timerFormat(Number(hours))}:${timerFormat(minutes)}:${timerFormat(
-        Number(seconds)
-      )}
+        ${timerFormat(Number(hours))}:${timerFormat(
+        Number(minutes)
+      )}:${timerFormat(Number(seconds))}
         `;
     }
   });
@@ -80,11 +82,6 @@ infoIcon.addEventListener("mouseout", () => {
 // Timer input field listener
 inputField.addEventListener("input", (e) => {
   inputValue = e.target.value;
-  //   chrome.storage.local.get(["timer"], (res) => {
-  //     chrome.storage.local.set({
-  //       timer: +inputValue,
-  //     });
-  //   });
 });
 
 // Set timer listener and formatting
