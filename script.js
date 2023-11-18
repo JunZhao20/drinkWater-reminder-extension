@@ -32,12 +32,11 @@ const timerFormat = function (time) {
 };
 
 let updateTimer = function () {
-  chrome.storage.local.get(["timer"], (res) => {
+  chrome.storage.local.get(["timer", "minute"], (res) => {
     hours = inputValue.slice(0, 2);
     // need to store minutes into background
     minutes = inputValue.slice(3, 5);
-    // let minutes1 = Number(minutes) - Math.ceil(res.timer / 60);
-    let minutes1 = 2 - Math.ceil(res.timer / 60);
+    let minutes1 = res.minute - Math.ceil(res.timer / 60);
 
     let seconds = "00";
     if (res.timer % 60 != 0) {
@@ -89,6 +88,7 @@ inputField.addEventListener("input", (e) => {
 btn.addEventListener("click", () => {
   hours = inputValue.slice(0, 2);
   minutes = inputValue.slice(3, 5);
+  chrome.storage.local.set({ minute: Number(minutes) });
   time.textContent = `
   ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
     Number(seconds)
