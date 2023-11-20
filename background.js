@@ -3,6 +3,15 @@ chrome.alarms.create("drinkTimer", {
   periodInMinutes: 1 / 60,
 });
 
+// Create notification for timer end
+const createNotification = function () {
+  chrome.notifications.create({
+    type: "basic",
+    title: "Timer Notification",
+    message: "Your timer has completed!",
+  });
+};
+
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "drinkTimer") {
     // creates the res obj with timer and isRunning keys.
@@ -11,6 +20,12 @@ chrome.alarms.onAlarm.addListener((alarm) => {
       if (res.isRunning) {
         let timer = Number(res.timer) + 1;
         let minute;
+        if (timer === 2) {
+          console.log("stopped");
+          createNotification();
+          isRunning = false;
+          timer = 0;
+        }
         // updates timer by setting timer var.
         chrome.storage.local.set({
           timer,
