@@ -33,22 +33,16 @@ const timerFormat = function (time) {
 
 let updateTimer = function () {
   chrome.storage.local.get(["timer", "minute"], (res) => {
-    hours = inputValue.slice(0, 2);
-    // need to store minutes into background
-    minutes = inputValue.slice(3, 5);
-    let minutes1 = res.minute - Math.ceil(res.timer / 60);
-
+    let minutesDisplay = res.minute - Math.ceil(res.timer / 60);
     let seconds = "00";
     if (res.timer % 60 != 0) {
       seconds = 60 - (res.timer % 60);
     }
     if (reset === true) {
-      time.textContent = "00:00:00";
+      time.textContent = "00:00";
     } else {
       time.textContent = `
-        ${timerFormat(Number(hours))}:${timerFormat(
-        Number(minutes1)
-      )}:${timerFormat(Number(seconds))}
+        ${timerFormat(Number(minutesDisplay))}:${timerFormat(Number(seconds))}
         `;
     }
   });
@@ -86,13 +80,11 @@ inputField.addEventListener("input", (e) => {
 
 // Set timer listener and formatting
 btn.addEventListener("click", () => {
-  hours = inputValue.slice(0, 2);
-  minutes = inputValue.slice(3, 5);
+  minutes = inputValue.slice(0, 2);
+  seconds = inputValue.slice(3, 5);
   chrome.storage.local.set({ minute: Number(minutes) });
   time.textContent = `
-  ${timerFormat(Number(hours))}:${timerFormat(Number(minutes))}:${timerFormat(
-    Number(seconds)
-  )}
+  ${timerFormat(Number(minutes))}:${timerFormat(Number(seconds))}
   `;
   if (inputValue === inputField.defaultValue) {
     chrome.storage.local.set({
@@ -116,7 +108,7 @@ resetBtn.addEventListener("click", () => {
       isRunning: false,
     },
     () => {
-      time.textContent = "00:00:00";
+      time.textContent = "00:00";
       inputField.value = inputField.defaultValue;
       reset = true;
     }
