@@ -22,9 +22,10 @@ body {
   border: solid;
   border-color: rgb(47, 116, 236);
   height: 20px;
+  width: 100px;
   max-width: 140px;
   background-color: white;
-  margin-left: 18%;
+  margin-left: 25%;
   margin-top: 10px;
 }
 
@@ -47,7 +48,8 @@ body {
   margin-bottom: 10px;
   border-radius: 20px;
   border: none;
-
+  width: 60px;
+  max-width: 60px;
   outline-color: rgb(155, 155, 155);
 }
 
