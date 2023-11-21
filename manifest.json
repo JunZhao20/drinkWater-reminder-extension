@@ -5,7 +5,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "alarms", "notifications"],
+  "permissions": ["storage", "alarms", "notifications", "nativeMessaging"],
   "description": "Water is essential for life. So drink it.",
   "action": {
     "default_popup": "index.html",
