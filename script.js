@@ -86,6 +86,9 @@ btn.addEventListener("click", () => {
     minute: Number(minutes),
     timer: 0,
   });
+  // chrome.runtime.sendMessage({ minutes: inputValue }, (response) => {
+  //   console.log("sent", response);
+  // });
   time.textContent = `
   ${timerFormat(Number(minutes))}:${timerFormat(Number(seconds))}
   `;
@@ -97,6 +100,7 @@ btn.addEventListener("click", () => {
   } else {
     chrome.storage.local.set({
       isRunning: true,
+      minute: inputValue,
     });
     reset = false;
   }
