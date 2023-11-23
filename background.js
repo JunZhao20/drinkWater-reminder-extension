@@ -9,7 +9,6 @@ const createNotification = function () {
     type: "basic",
     title: "Timer Notification",
     message: "Your timer has completed!",
-    iconUrl: "./images/icon1.png",
   });
 };
 
@@ -21,19 +20,12 @@ chrome.alarms.onAlarm.addListener((alarm) => {
       if (res.isRunning) {
         let timer = Number(res.timer) + 1;
         let minute;
-
-        // chrome.runtime.onMessage.addListener(
-        //   (message, sender, sendResponse) => {
-        //     minute = message.minutes;
-        //     sendResponse();
-        //   }
-        // );
-        if (timer === Number(minute) * 60) {
-          console.log(`in if ${minute}`);
-          createNotification();
-          isRunning = false;
-          timer = 0;
-        }
+        // if (timer === 2) {
+        //   console.log("stopped");
+        //   createNotification();
+        //   isRunning = false;
+        //   timer = 0;
+        // }
         // updates timer by setting timer var.
         chrome.storage.local.set({
           timer,
