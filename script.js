@@ -82,7 +82,7 @@ inputField.addEventListener("input", (e) => {
 btn.addEventListener("click", () => {
   minutes = inputValue.slice(0, 2);
   seconds = inputValue.slice(3, 5);
-  chrome.storage.local.set({ minute: Number(minutes) });
+  chrome.storage.local.set({ minute: Number(minutes), timer: 0 });
   time.textContent = `
   ${timerFormat(Number(minutes))}:${timerFormat(Number(seconds))}
   `;
