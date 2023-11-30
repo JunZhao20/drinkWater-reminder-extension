@@ -43,6 +43,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
               drinkNum: drinkNum++,
             });
             if (drinkNum === 7) {
+              drinkFinish();
             }
           }
           // updates timer by setting timer var.
