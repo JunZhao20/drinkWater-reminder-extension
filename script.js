@@ -3,7 +3,7 @@ const infoIcon = document.querySelector(".info");
 const hide = document.querySelector(".hide");
 const infoOverlay = document.querySelector(".info-overlay");
 const infoBox = document.querySelector(".info-box");
-const drinkNum = document.querySelector(".drink-num");
+const drinkNumber = document.querySelector(".drink-num");
 const resetBtn = document.querySelector(".resetBtn");
 const btn = document.querySelector(".btn");
 const inputField = document.querySelector("#field-time");
@@ -32,7 +32,7 @@ const timerFormat = function (time) {
 };
 
 let updateTimer = function () {
-  chrome.storage.local.get(["timer", "minute"], (res) => {
+  chrome.storage.local.get(["timer", "minute", "drinkNum"], (res) => {
     let minutesDisplay = res.minute - Math.ceil(res.timer / 60);
     let seconds = "00";
     if (res.timer % 60 != 0) {
@@ -45,6 +45,7 @@ let updateTimer = function () {
         ${timerFormat(Number(minutesDisplay))}:${timerFormat(Number(seconds))}
         `;
     }
+    drinkNumber.textContent = parseInt(res.drinkNum);
   });
 };
 
