@@ -3,7 +3,7 @@ chrome.alarms.create("drinkTimer", {
   periodInMinutes: 1 / 60,
 });
 
-// Create notification for timer end
+// notification for drink timer
 const createNotification = function () {
   chrome.notifications.create({
     type: "basic",
@@ -13,6 +13,7 @@ const createNotification = function () {
   });
 };
 
+// notification for reaching drink goal
 const drinkFinish = function () {
   chrome.notifications.create({
     type: "basic",
@@ -29,24 +30,25 @@ chrome.alarms.onAlarm.addListener((alarm) => {
       // Added drinkNum to allow background service to track user's drink num
       ["timer", "isRunning", "minute", "drinkNum"],
       (res) => {
-        // if isRunning is present is true initialize timer var with res.timer + 1
+        // start timer condition
         if (res.isRunning) {
           let timer = Number(res.timer) + 1;
           let minute = Number(res.minute);
           let drinkNum = Number(res.drinkNum);
+          // Finish timer condition
           if (timer === minute * 60) {
-            console.log(drinkNum);
             createNotification();
             chrome.storage.local.set({
               isRunning: false,
               timer: 0,
               drinkNum: drinkNum++,
             });
+            // drink goal condition
             if (drinkNum === 7) {
               drinkFinish();
             }
           }
-          // updates timer by setting timer var.
+          // updates timer.
           chrome.storage.local.set({
             timer,
             minute,

@@ -31,6 +31,7 @@ const timerFormat = function (time) {
   return time < 10 ? `0${time}` : time;
 };
 
+// update function for UI
 let updateTimer = function () {
   chrome.storage.local.get(["timer", "minute", "drinkNum"], (res) => {
     let minutesDisplay = res.minute - Math.ceil(res.timer / 60);
@@ -102,7 +103,6 @@ btn.addEventListener("click", () => {
 });
 
 // Reset timer
-
 resetBtn.addEventListener("click", () => {
   chrome.storage.local.set(
     {
