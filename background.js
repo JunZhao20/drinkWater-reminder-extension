@@ -58,11 +58,14 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 });
 // initialize default values to the timer and isRunning keys if they don't exist
-chrome.storage.local.get(["timer", "isRunning"], (res) => {
-  chrome.storage.local.set({
-    timer: "timer" in res ? Number(res.timer) : 0,
-    isRunning: "isRunning" in res ? res.isRunning : false,
-    minute: "minute" in res ? Number(res.minute) : 0,
-    drinkNum: "drinkNum" in res ? Number(res.drinkNum) : 0,
-  });
-});
+chrome.storage.local.get(
+  ["timer", "isRunning", "minute", "drinkNum"],
+  (res) => {
+    chrome.storage.local.set({
+      timer: "timer" in res ? Number(res.timer) : 0,
+      isRunning: "isRunning" in res ? res.isRunning : false,
+      minute: "minute" in res ? Number(res.minute) : 0,
+      drinkNum: "drinkNum" in res ? Number(res.drinkNum) : 0,
+    });
+  }
+);
