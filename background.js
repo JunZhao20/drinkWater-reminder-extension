@@ -33,8 +33,9 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         if (res.isRunning) {
           let timer = Number(res.timer) + 1;
           let minute = Number(res.minute);
-          let drinkNum = 1;
+          let drinkNum = Number(res.drinkNum);
           if (timer === minute * 60) {
+            console.log(drinkNum);
             createNotification();
             chrome.storage.local.set({
               isRunning: false,

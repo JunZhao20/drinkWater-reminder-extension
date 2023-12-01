@@ -45,7 +45,8 @@ let updateTimer = function () {
         ${timerFormat(Number(minutesDisplay))}:${timerFormat(Number(seconds))}
         `;
     }
-    drinkNumber.textContent = parseInt(res.drinkNum);
+
+    drinkNumber.textContent = res.drinkNum;
   });
 };
 
